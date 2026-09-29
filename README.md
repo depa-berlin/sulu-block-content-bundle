@@ -19,7 +19,7 @@ Content block collection for Sulu CMS — 29 configurable content blocks includi
 | `block--content-faq` | FAQ block (uses accordion-item children) |
 | `block--content-form` | Sulu form integration block |
 | `block--content-headline` | Standalone headline |
-| `block--content-html` | Raw HTML block |
+| `block--content-html` | Rich text block (CKEditor, rendered unescaped) |
 | `block--content-html-template` | HTML with variable substitution |
 | `block--content-image` | Image with ARIA and loading config |
 | `block--content-inline-svg` | Inline SVG block |
@@ -36,6 +36,10 @@ Content block collection for Sulu CMS — 29 configurable content blocks includi
 | `block--content-action-button` | Action/trigger button |
 | `block--content-asset-container` | Asset download container |
 
+`template-var` (`config/blocks/template-var.xml`) is not a standalone block —
+it's a child type used by `block--content-html-template`'s `template_vars`
+sub-block and isn't selectable on its own.
+
 ## Requirements
 
 - PHP 8.2+
@@ -45,8 +49,21 @@ Content block collection for Sulu CMS — 29 configurable content blocks includi
 
 ## Installation
 
+Both `depa/sulu-block-content` and `depa/sulu-block-helper` are proprietary
+packages, not published on Packagist. Add them as VCS repositories in your
+project's `composer.json` first:
+
+```json
+"repositories": [
+    {"type": "vcs", "url": "https://github.com/depa-berlin/sulu-block-content.git"},
+    {"type": "vcs", "url": "https://github.com/depa-berlin/sulu-block-helper.git"}
+]
+```
+
+Then:
+
 ```bash
-composer require depa/sulu-block-content
+composer require depa/sulu-block-content:dev-main
 ```
 
 If your project uses **Symfony Flex** (the default in the Sulu/Symfony
