@@ -13,7 +13,7 @@
     {# 1. Fehleranzeige im Preview-Modus #}
     {% if is_preview %}
         {% if image is not empty and image.mimeType != 'image/svg+xml' %}
-            <div class="alert alert-danger" role="alert" {{ sulu_block_preview(content) }}>
+            <div class="alert alert-danger" role="alert">
                 {% if app.request.locale == 'de' %}
                     <strong>Fehlerhafte SVG-Datei</strong>
                     <div>Das verwendete Bild ist keine SVG-Datei.</div>
